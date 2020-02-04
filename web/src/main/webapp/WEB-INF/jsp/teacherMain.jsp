@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: 24707
@@ -57,64 +58,41 @@
                         <th>卷面分</th>
                         <th>成绩比例</th>
                         <th>期末成绩</th>
+                        <th>操作</th>
                     </tr>
                     </thead>
                     <tbody>
-                    <tr>
-                        <td>${requestScope.student.sname}</td>
-                        <td>Bangalore</td>
-                        <td>560001</td>
-                        <td>560001</td>
-                        <td>560001</td>
-                        <td>560001</td>
-                        <td>560001</td>
-                        <td>560001</td>
-                        <td>560001</td>
-                        <td>560001</td>
-                        <td>560001</td>
-
-                    </tr>
-                    <tr>
-                        <td>Sachin</td>
-                        <td>Mumbai</td>
-                        <td>400003</td>
-                        <td>560001</td>
-                        <td>560001</td>
-                        <td>560001</td>
-                        <td>560001</td>
-                        <td>560001</td>
-                        <td>560001</td>
-                        <td>560001</td>
-                        <td>560001</td>
-
-                    </tr>
-                    <tr>
-                        <td>Uma</td>
-                        <td>Pune</td>
-                        <td>411027</td>
-                        <td>560001</td>
-                        <td>560001</td>
-                        <td>560001</td>
-                        <td>560001</td>
-                        <td>560001</td>
-                        <td>560001</td>
-                        <td>560001</td>
-                        <td>560001</td>
-
-                    </tr>
-                    <tr>
-                        <td colspan="11" style="text-align: center">
-                            <ul class="pagination">
-                                <li><a href="#">&laquo;</a></li>
-                                <li class="active"><a href="#">1</a></li>
-                                <li class="disabled"><a href="#">2</a></li>
-                                <li><a href="#">3</a></li>
-                                <li><a href="#">4</a></li>
-                                <li><a href="#">5</a></li>
-                                <li><a href="#">&raquo;</a></li>
-                            </ul>
-                        </td>
-                    </tr>
+                    <c:forEach var="coursegrade" items="${requestScope.coursegrades}">
+                        <tr>
+                            <td>${coursegrade.stuLoginAccount}</td>
+                            <td>${coursegrade.sname}</td>
+                            <td>${coursegrade.ssex}</td>
+                            <td>${coursegrade.tname}</td>
+                            <td>${coursegrade.course}</td>
+                            <td>${coursegrade.add}</td>
+                            <td>${coursegrade.subtract}</td>
+                            <td>${coursegrade.agrade}</td>
+                            <td>${coursegrade.bgrade}</td>
+                            <td>${coursegrade.proportion}</td>
+                            <td>${coursegrade.grade}</td>
+                            <td><button type="button" class="btn btn-info"><i class="glyphicon glyphicon-wrench"></i>修改</button></td>
+                        </tr>
+                    </c:forEach>
+                    <c:if test="${requestScope.coursegrades != null}">
+                        <tr>
+                            <td colspan="12" style="text-align: center">
+                                <ul class="pagination">
+                                    <li><a href="#">&laquo;</a></li>
+                                    <li class="active"><a href="#">1</a></li>
+                                    <li class="disabled"><a href="#">2</a></li>
+                                    <li><a href="#">3</a></li>
+                                    <li><a href="#">4</a></li>
+                                    <li><a href="#">5</a></li>
+                                    <li><a href="#">&raquo;</a></li>
+                                </ul>
+                            </td>
+                        </tr>
+                    </c:if>
                     </tbody>
                 </table>
             </div>

@@ -15,10 +15,20 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class Coursegrade {
     private Integer id;
+    /*学号*/
+    private String stuLoginAccount;
     /*学生id*/
     private Integer sid;
+    /*学生性别*/
+    private String ssex;
+    /*学生姓名*/
+    private String sname;
     /*教师id*/
     private Integer tid;
+    /*教师姓名*/
+    private String tname;
+    /*课程*/
+    private String course;
     /*加分项*/
     private String add;
     /*减分项*/
@@ -26,7 +36,7 @@ public class Coursegrade {
     /*平时成绩*/
     private String agrade;
     /*期末考试成绩*/
-    private String bagrade;
+    private String bgrade;
     /*总成绩*/
     private String grade;
     /*期末成绩考试成绩比例*/

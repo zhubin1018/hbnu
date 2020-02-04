@@ -32,22 +32,22 @@ public class TeacherController {
 
 
     @RequestMapping("/toTeacherMain")
-    public String toTeacherMain(HttpSession session){
-
-        System.out.println("=========================================toTeacherMain=================================");
-        User user = (User)session.getAttribute("user");
-        Integer tid = teacherService.seletcTidByUser(user);
-        System.out.println("tid = " + tid);
-        System.out.println("user = " + user);
-        List<Student> students = studentService.selectStudentByTid(tid);
+    public String toTeacherMain(HttpSession session,Map map){
         List<Coursegrade> coursegrades = new ArrayList<Coursegrade>();
-        for (Student student : students) {
-            System.out.println("student = " + student);
-            Integer sid = student.getSid();
-            Coursegrade coursegrade = studentService.selectCoursegradeByids(sid, tid);
-            coursegrades.add(coursegrade);
-            System.out.println("coursegrade = " + coursegrade);
+        try {
+            User user = (User)session.getAttribute("user");
+            Integer tid = teacherService.seletcTidByUser(user);
+            List<Student> students = studentService.selectStudentByTid(tid);
+            for (Student student : students) {
+                Integer sid = student.getSid();
+                Coursegrade coursegrade = studentService.selectCoursegradeByids(sid, tid);
+                if (coursegrade != null){
+                    coursegrades.add(coursegrade);
+                }
+            }
+        }catch (Exception e){
         }
+        map.put("coursegrades",coursegrades);
         return "teacherMain";
     }
 }
