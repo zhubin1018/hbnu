@@ -14,7 +14,7 @@
                 <li style="padding-top:8px;">
                     <div class="btn-group">
                         <button type="button" class="btn btn-default btn-success dropdown-toggle" data-toggle="dropdown">
-                            <i class="glyphicon glyphicon-user"></i>小明<span
+                            <i class="glyphicon glyphicon-user"></i>${requestScope.tname}<span
                                 class="caret"></span>
                         </button>
                         <ul class="dropdown-menu" role="menu">

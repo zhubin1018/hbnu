@@ -2,6 +2,7 @@ package com.bin.hbnu.controller;
 
 import com.bin.hbnu.bean.Coursegrade;
 import com.bin.hbnu.bean.Student;
+import com.bin.hbnu.bean.Teacher;
 import com.bin.hbnu.bean.User;
 import com.bin.hbnu.service.StudentService;
 import com.bin.hbnu.service.TeacherService;
@@ -34,9 +35,12 @@ public class TeacherController {
     @RequestMapping("/toTeacherMain")
     public String toTeacherMain(HttpSession session,Map map){
         List<Coursegrade> coursegrades = new ArrayList<Coursegrade>();
+        String tname = null;
         try {
             User user = (User)session.getAttribute("user");
-            Integer tid = teacherService.seletcTidByUser(user);
+            Teacher teacher = teacherService.validateTeacher(user);
+            Integer tid = teacher.getTid();
+            tname = teacher.getTname();
             List<Student> students = studentService.selectStudentByTid(tid);
             for (Student student : students) {
                 Integer sid = student.getSid();
@@ -48,6 +52,7 @@ public class TeacherController {
         }catch (Exception e){
         }
         map.put("coursegrades",coursegrades);
+        map.put("tname",tname);
         return "teacherMain";
     }
 }

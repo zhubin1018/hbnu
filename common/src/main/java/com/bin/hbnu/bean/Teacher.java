@@ -10,6 +10,9 @@ import lombok.NoArgsConstructor;
  * @ClassName Teacher
  * @date 2020/2/2 23:38
  **/
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class Teacher {
     private Integer tid;
     private String tname;
