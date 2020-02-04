@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--
+namespace : 命名空间，根据namespace区分不同的sql映射文件的。暂时，这个namespace可以随意编写
+如果使用的是接口式编程，对应的namespace必须是接口的全类名
+-->
+<mapper namespace="com.bin.hbnu.dao.UserMapper">
+    <!--
+    select节点： 查询节点,所有的查询操作的sql都是写在这个里面的
+        id属性： 表示唯一标识符。通过id找到对应的sql语句
+        resultType属性：查询结果的结果类型
+    -->
+
+</mapper>
