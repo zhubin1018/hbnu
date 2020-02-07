@@ -73,10 +73,6 @@ public class TeacherController {
                         Map map) {
         String tname = (String) session.getAttribute("userName");
         /*算分*/
-        System.out.println(tname + "8888888888888888888888888888888888888888888888888888888888888888888");
-        System.out.println("coursegrade = " + coursegrade);
-        System.out.println(coursegrade.getSname());
-        System.out.println(" = 77777777777777777777777777777777777777777777777777777777777777777777777777");
         Integer agrade = Integer.parseInt(coursegrade.getAgrade());
         if (agrade > 100) {
             agrade = 100;
@@ -167,5 +163,14 @@ public class TeacherController {
             ajaxResult.setSuccess(false);
         }
         return ajaxResult;
+    }
+
+
+    @RequestMapping("/toSubract")
+    public String toSubract(HttpSession session, Map map) {
+        String tname = (String) session.getAttribute("userName");
+        List<Coursegrade> coursegrades = coursegradeService.selectCourByTname(tname);
+        map.put("coursegrades", coursegrades);
+        return "subract";
     }
 }

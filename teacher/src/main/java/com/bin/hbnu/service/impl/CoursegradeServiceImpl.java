@@ -28,4 +28,8 @@ public class CoursegradeServiceImpl implements CoursegradeService {
     public Coursegrade findByTidSid(Integer tid, Integer sid) {
         return coursegradeMapper.findByTidSid(tid,sid);
     }
+
+    public List<Coursegrade> selectCourByTname(String tname) {
+        return coursegradeMapper.selectCourByTname(tname);
+    }
 }

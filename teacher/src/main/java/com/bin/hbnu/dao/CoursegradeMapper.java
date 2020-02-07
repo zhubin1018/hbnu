@@ -13,4 +13,6 @@ public interface CoursegradeMapper {
     List<Coursegrade> findBy(@Param("tname")String tname, @Param("stuLog")String stuLog, @Param("sname")String stuName);
 
     Coursegrade findByTidSid(@Param("tid") Integer tid, @Param("sid") Integer sid);
+
+    List<Coursegrade> selectCourByTname(@Param("tname") String tname);
 }

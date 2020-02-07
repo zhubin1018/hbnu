@@ -9,12 +9,12 @@
 
             <li class="list-group-item tree-closed">
                 <span>
-                        <a href=""><i class="glyphicon glyphicon-ok"></i> 考勤记录</a>
+                        <a href="${APP_PATH}/teacher/toSubract"><i class="glyphicon glyphicon-ok"></i> 考勤记录</a>
                 </span>
             </li>
             <li class="list-group-item tree-closed">
                 <span>
-                        <a href=""><i class="glyphicon glyphicon-user"></i> 点名答题</a>
+                        <a href="${APP_PATH}/toDianMing"><i class="glyphicon glyphicon-user"></i> 点名答题</a>
                 </span>
             </li>
             <li class="list-group-item tree-closed">

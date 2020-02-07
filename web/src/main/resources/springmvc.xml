@@ -32,4 +32,6 @@
 
     <!-- 调度-->
     <mvc:view-controller path="/toTeacherMain" view-name="teacherMain"></mvc:view-controller>
+    <mvc:view-controller path="/toDianMing" view-name="teacherDianMing"></mvc:view-controller>
+
 </beans>

@@ -12,4 +12,6 @@ public interface CoursegradeService {
     List<Coursegrade> findBy(String tname, String stuLog, String stuName);
 
     Coursegrade findByTidSid(Integer tid, Integer sid);
+
+    List<Coursegrade> selectCourByTname(String tname);
 }

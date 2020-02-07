@@ -45,4 +45,10 @@ namespace : 命名空间，根据namespace区分不同的sql映射文件的。�
         WHERE sid = #{sid} AND tid =#{tid}
     </select>
 
+    <!--List<Coursegrade> selectCourByTname(@Param("tname") String tname);-->
+    <select id="selectCourByTname" resultType="com.bin.hbnu.bean.Coursegrade">
+        SELECT * FROM coursegrade
+        WHERE tname = #{tname}
+    </select>
+
 </mapper>
