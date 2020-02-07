@@ -24,4 +24,8 @@ public class CoursegradeServiceImpl implements CoursegradeService {
     public List<Coursegrade> findBy(String tname, String stuLog, String stuName) {
         return coursegradeMapper.findBy(tname,stuLog,stuName);
     }
+
+    public Coursegrade findByTidSid(Integer tid, Integer sid) {
+        return coursegradeMapper.findByTidSid(tid,sid);
+    }
 }

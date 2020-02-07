@@ -1,6 +1,9 @@
 package com.bin.hbnu.controller;
 
-import com.bin.hbnu.bean.*;
+import com.bin.hbnu.bean.AjaxResult;
+import com.bin.hbnu.bean.Coursegrade;
+import com.bin.hbnu.bean.Teacher;
+import com.bin.hbnu.bean.User;
 import com.bin.hbnu.service.CoursegradeService;
 import com.bin.hbnu.service.StudentService;
 import com.bin.hbnu.service.TeacherService;
@@ -8,10 +11,7 @@ import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
 import java.util.List;
@@ -33,6 +33,17 @@ public class TeacherController {
     @Autowired
     private CoursegradeService coursegradeService;
 
+    @ModelAttribute
+    public void getCoursegrade(@RequestParam(value = "tid", required = false, defaultValue = "0") Integer tid,
+                               @RequestParam(value = "sid", required = false, defaultValue = "0") Integer sid,
+                               Map map) {
+        if (tid != 0 && sid != 0) {
+            Coursegrade coursegrade = coursegradeService.findByTidSid(tid, sid);
+            map.put("coursegrade", coursegrade);
+        }
+    }
+
+
     @RequestMapping("/selectLike")
     public String selectLike(@RequestParam(value = "stuLog", required = false) String stuLog,
                              @RequestParam(value = "stuName", required = false) String stuName,
@@ -52,16 +63,17 @@ public class TeacherController {
     }
 
     @RequestMapping(value = "/index", method = RequestMethod.POST)
-    public String index(@RequestParam(value = "stuLog", required = false) String stuLog,
+    public String index(@ModelAttribute("coursegrade") Coursegrade coursegrade,
+                        @RequestParam(value = "stuLog", required = false) String stuLog,
                         @RequestParam(value = "stuName", required = false) String stuName,
                         @RequestParam(value = "pageNo", required = false, defaultValue = "1") Integer pageNo,
                         @RequestParam(value = "pageSize", required = false, defaultValue = "2") Integer pageSize,
                         HttpSession session,
-                        Coursegrade coursegrade,
+
                         Map map) {
         String tname = (String) session.getAttribute("userName");
         /*算分*/
-        System.out.println(tname+"8888888888888888888888888888888888888888888888888888888888888888888");
+        System.out.println(tname + "8888888888888888888888888888888888888888888888888888888888888888888");
         System.out.println("coursegrade = " + coursegrade);
         System.out.println(coursegrade.getSname());
         System.out.println(" = 77777777777777777777777777777777777777777777777777777777777777777777777777");
@@ -77,7 +89,6 @@ public class TeacherController {
         String grade = Math.round(agrade * proportion + bgrade * (1 - proportion)) + "";
         coursegrade.setGrade(grade);
         coursegradeService.updateCourByCour(coursegrade);
-
         PageHelper.startPage(pageNo, pageSize);
         List<Coursegrade> coursegrades = coursegradeService.findBy(tname, stuLog, stuName);
         PageInfo<Coursegrade> info = new PageInfo<Coursegrade>(coursegrades);

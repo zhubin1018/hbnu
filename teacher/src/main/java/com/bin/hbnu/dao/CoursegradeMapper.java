@@ -11,4 +11,6 @@ public interface CoursegradeMapper {
     void updateCourByCour(Coursegrade coursegrade);
 
     List<Coursegrade> findBy(@Param("tname")String tname, @Param("stuLog")String stuLog, @Param("sname")String stuName);
+
+    Coursegrade findByTidSid(@Param("tid") Integer tid, @Param("sid") Integer sid);
 }

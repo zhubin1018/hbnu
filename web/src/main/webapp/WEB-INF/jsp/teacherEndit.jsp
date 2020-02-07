@@ -67,7 +67,7 @@
                         </div>
                         <div class="form-group">
                             <label for="agrade">平时分</label>
-                            <input type="text" class="form-control" id="agrade" agrade
+                            <input type="text" class="form-control" id="agrade" name="agrade"
                                    value="${requestScope.coursegrade.agrade}">
                         </div>
                         <div class="form-group">

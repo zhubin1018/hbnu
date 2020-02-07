@@ -10,4 +10,6 @@ public interface CoursegradeService {
     void updateCourByCour(Coursegrade coursegrade);
 
     List<Coursegrade> findBy(String tname, String stuLog, String stuName);
+
+    Coursegrade findByTidSid(Integer tid, Integer sid);
 }
