@@ -20,5 +20,5 @@ public interface StudentMapper {
     @Select("SELECT * From student WHERE tid = #{tid}")
     List<Student> selectStudentByTid(Integer tid);
 
-    Coursegrade selectCoursegradeByids(@Param("sid") Integer sid, @Param("tid") Integer tid);
+    List<Coursegrade> selectCoursegradeByids(@Param("tid") Integer tid);
 }

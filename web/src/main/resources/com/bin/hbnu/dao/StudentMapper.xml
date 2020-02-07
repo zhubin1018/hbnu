@@ -2,12 +2,10 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-
 <mapper namespace="com.bin.hbnu.dao.StudentMapper">
-   <!--    Coursegrade selectCoursegradeByids(Integer sid, Integer tid);-->
-<select id="selectCoursegradeByids" resultType="com.bin.hbnu.bean.Coursegrade">
+    <select id="selectCoursegradeByids" resultType="com.bin.hbnu.bean.Coursegrade">
     SELECT * FROM
     coursegrade
-    WHERE sid = #{sid} AND tid = #{tid}
+    WHERE tid = #{tid}
 </select>
 </mapper>

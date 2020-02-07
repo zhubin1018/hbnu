@@ -17,5 +17,5 @@ public interface StudentService {
 
     List<Student> selectStudentByTid(Integer tid);
 
-    Coursegrade selectCoursegradeByids(Integer sid, Integer tid);
+    List<Coursegrade> selectCoursegradeByids(Integer tid);
 }

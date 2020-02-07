@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--
+namespace : 命名空间，根据namespace区分不同的sql映射文件的。暂时，这个namespace可以随意编写
+如果使用的是接口式编程，对应的namespace必须是接口的全类名
+-->
+<mapper namespace="com.bin.hbnu.dao.CoursegradeMapper">
+    <!--Coursegrade selectCourByIds(Integer sid, Integer tid);-->
+    <select id="selectCourByIds" resultType="com.bin.hbnu.bean.Coursegrade">
+        SELECT * FROM coursegrade
+        WHERE sid = #{sid} AND tid =#{tid}
+    </select>
+    <!--void updateCourByCour(Coursegrade coursegrade);-->
+    <update id="updateCourByCour">
+    UPDATE coursegrade
+    SET
+    agrade = #{agrade} ,
+    bgrade = #{bgrade} ,
+    grade = #{grade}
+    WHERE id = #{id}
+</update>
+<!--List<Coursegrade> findBy(@Param("tname")String tname, @Param("stuLog")String stuLog, @Param("sname")String stuName)-->
+    <select id="findBy" resultType="com.bin.hbnu.bean.Coursegrade">
+        SELECT * FROM coursegrade
+
+        <where>
+            <if test="true">
+                AND tname = #{tname}
+            </if>
+            <if test="stuLog != null and stuLog.trim() != ''">
+                AND stuLoginAccount LIKE concat('%', #{stuLog}, '%')
+            </if>
+            <if test="sname != null and sname.trim() != ''">
+                AND sname LIKE concat('%', #{sname}, '%')
+            </if>
+        </where>
+    </select>
+</mapper>

@@ -30,7 +30,7 @@ public class Coursegrade {
     /*课程*/
     private String course;
     /*加分项*/
-    private String add;
+    private String addgrade;
     /*减分项*/
     private String subtract;
     /*平时成绩*/

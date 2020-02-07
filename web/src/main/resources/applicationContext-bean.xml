@@ -46,7 +46,7 @@
         <!--配置Mybatis核心配置文件路径-->
         <property name="configLocation" value="classpath:mybatis/mybatis.xml"></property>
         <!--Mapper文件的路径-->
-        <property name="mapperLocations" value="classpath:mappers/*.xml"></property>
+        <property name="mapperLocations" value="classpath:com/bin/hbnu/dao/*.xml"></property>
     </bean>
     <!-- 将Mapper接口的代理对象交给IOC容器管理，配置Mapper接口扫描的包 -->
     <bean id="mapperScannerConfigurer" class="org.mybatis.spring.mapper.MapperScannerConfigurer">

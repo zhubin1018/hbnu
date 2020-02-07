@@ -1,5 +1,6 @@
 package com.bin.hbnu.service.impl;
 
+import com.bin.hbnu.bean.Coursegrade;
 import com.bin.hbnu.bean.Teacher;
 import com.bin.hbnu.bean.User;
 import com.bin.hbnu.dao.TeacherMapper;
@@ -25,4 +26,15 @@ public class TeacherServiceImpl implements TeacherService {
     public Integer seletcTidByUser(User user) {
         return teacherMapper.selectTidByUser(user);
     }
+
+    public Coursegrade findCoursegradeByIds(Integer sid, Integer tid) {
+        return teacherMapper.findCoursegradeByIds(sid,tid);
+    }
+
+    public void updateCoursegrade(Coursegrade coursegrade) {
+        teacherMapper.updateCoursegrade(coursegrade);
+    }
+
+
+
 }

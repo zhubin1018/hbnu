@@ -1,5 +1,6 @@
 package com.bin.hbnu.service;
 
+import com.bin.hbnu.bean.Coursegrade;
 import com.bin.hbnu.bean.Teacher;
 import com.bin.hbnu.bean.User;
 
@@ -13,4 +14,10 @@ public interface TeacherService {
     Teacher validateTeacher(User user);
 
     Integer seletcTidByUser(User user);
+
+    Coursegrade findCoursegradeByIds(Integer sid, Integer tid);
+
+    void updateCoursegrade(Coursegrade coursegradeByIds);
+
+
 }

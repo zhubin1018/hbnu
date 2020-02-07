@@ -28,7 +28,7 @@ public class StudentServiceImpl implements StudentService {
         return studentMapper.selectStudentByTid(tid);
     }
 
-    public Coursegrade selectCoursegradeByids(Integer sid, Integer tid) {
-        return studentMapper.selectCoursegradeByids(sid,tid);
+    public List<Coursegrade> selectCoursegradeByids(Integer tid) {
+        return studentMapper.selectCoursegradeByids(tid);
     }
 }

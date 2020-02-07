@@ -1,10 +1,9 @@
 package com.bin.hbnu.controller;
 
-import com.bin.hbnu.bean.Student;
-import com.bin.hbnu.service.StudentService;
 import com.bin.hbnu.bean.AjaxResult;
 import com.bin.hbnu.bean.Teacher;
 import com.bin.hbnu.bean.User;
+import com.bin.hbnu.service.StudentService;
 import com.bin.hbnu.service.TeacherService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -35,6 +34,7 @@ public class DispatcherController {
         System.out.println("=============================================================");
         System.out.println("DispatcherController.doAjaxLogin  1");
         System.out.println(user.getUserType());
+        String userName = null;
         // 创建AjaxResult对象
         AjaxResult ajaxResult = new AjaxResult();
         if (user.getUserType().equals("teacher")) {
@@ -45,9 +45,11 @@ public class DispatcherController {
             System.out.println("============================" + teacher);
             if (teacher != null) {
                 System.out.println("DispatcherController.doAjaxLogin  3");
+                userName = teacher.getTname();
                 ajaxResult.setSuccess(true);
                 session.setAttribute("teacher", teacher);
                 session.setAttribute("user", user);
+                session.setAttribute("userName",userName);
             } else {
                 ajaxResult.setSuccess(false);
             }

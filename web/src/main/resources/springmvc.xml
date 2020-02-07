@@ -31,4 +31,5 @@
     <mvc:annotation-driven></mvc:annotation-driven>
 
     <!-- 调度-->
+    <mvc:view-controller path="/toTeacherMain" view-name="teacherMain"></mvc:view-controller>
 </beans>

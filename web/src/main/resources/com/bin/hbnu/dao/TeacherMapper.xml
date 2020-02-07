@@ -2,13 +2,9 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<!--
-namespace : 命名空间，根据namespace区分不同的sql映射文件的。暂时，这个namespace可以随意编写
-如果使用的是接口式编程，对应的namespace必须是接口的全类名
--->
-<mapper namespace="com.bin.hbnu.dao.TeacherMapper">
 
-    <!--   Teacher validateTeacher(User user);-->
+<mapper namespace="com.bin.hbnu.dao.TeacherMapper">
+   <!--Teacher validateTeacher(User user);-->
     <select id="validateTeacher"  resultMap="testResultMap">
         SELECT *
         FROM teacher
@@ -20,12 +16,25 @@ namespace : 命名空间，根据namespace区分不同的sql映射文件的。�
         FROM teacher
         WHERE loginAccount = #{loginAccount}
     </select>
-<!--
- private Integer tid;
-    private String tname;
-    private String course;
-    private String loginAccount;
-    private String password;-->
+    <!--Coursegrade findCoursegradeByIds(Integer sid, Integer tid);-->
+    <select id="findCoursegradeByIds" resultType="com.bin.hbnu.bean.Coursegrade">
+        SELECT * FROM coursegrade WHERE sid = #{sid} AND tid = #{tid}
+    </select>
+
+   <!-- void updateCoursegrade(Coursegrade coursegrade);-->
+    <update id="updateCoursegrade">
+        UPDATE coursegrade
+        SET
+        addgrade = #{addgrade},
+        agrade = #{agrade},
+        grade = #{grade}
+        WHERE id = #{id}
+    </update>
+
+
+
+
+
     <resultMap id="testResultMap"  type="com.bin.hbnu.bean.Teacher">
         <id column="tid" property="tid"></id>
         <result column="tname" property="tname"></result>
@@ -34,3 +43,4 @@ namespace : 命名空间，根据namespace区分不同的sql映射文件的。�
         <result column="password" property="password"></result>
     </resultMap>
 </mapper>
+
