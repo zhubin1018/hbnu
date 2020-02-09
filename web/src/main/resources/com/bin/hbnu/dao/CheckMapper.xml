@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.bin.hbnu.dao.CheckMapper">
+
+    <!--Check selectBy(@Param("dateObj") String dateObj, @Param("tid")Integer tid, @Param("sid")Integer sid);-->
+    <select id="selectBy" resultType="com.bin.hbnu.bean.CheckObj">
+        SELECT * FROM checkObj
+        WHERE dateObj = #{dateObj} AND tid = #{tid} AND sid = #{sid}
+    </select>
+    <!--void saveCheckObj(@Param("dateObj")String dateObj, @Param("sid")Integer sid, @Param("tid")Integer tid),@Param("beiZhu") String str;-->
+    <insert id="saveCheckObj">
+        INSERT INTO checkObj
+        (dateObj,sid,tid,beiZhu)
+        VALUES(#{dateObj},#{sid},#{tid},#{beiZhu})
+    </insert>
+    <!--void updateCheckObj(CheckObj checkObj);-->
+    <update id="updateCheckObj">
+        UPDATE checkObj
+        SET dateObj = #{dateObj} ,
+            beiZhu = #{beiZhu}
+        WHERE  id = #{id}
+    </update>
+    <!--List findMingXiByTid(@Param("tid") Integer tid);-->
+    <select id="findMingXiByTid" resultType="com.bin.hbnu.bean.MingXi">
+        SELECT ch.id ,ch.dateObj,ch.beiZhu,co.sname,co.tname,co.course,co.tid,co.sid
+        FROM checkObj ch
+        INNER JOIN coursegrade co on
+        ch.tid = co.tid AND ch.sid = co.sid
+        WHERE co.tid = #{tid}
+    </select>
+    <!--List<CheckObj> findByDate(@Param("dateObj") String date, @Param("tid") Integer tid);-->
+    <select id="findByDate" resultType="com.bin.hbnu.bean.CheckObj">
+        SELECT * FROM checkObj
+        WHERE dateObj = #{dateObj} AND tid = #{tid}
+    </select>
+    <!--CheckObj selectBeiZhuByids(@Param("tid")Integer tid, @Param("sid")Integer sid);-->
+    <select id="selectBeiZhuByids" resultType="com.bin.hbnu.bean.CheckObj">
+        SELECT * FROM checkObj
+        WHERE sid = #{sid} AND dateObj = #{dateObj} AND tid = #{tid}
+    </select>
+</mapper>

@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
@@ -7,7 +8,6 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
@@ -26,14 +26,12 @@
     <script src="${APP_PATH}/layer/layer.js"></script>
 
     <style>
-        body {
-            background: #000;
-        }
+
 
         #btn {
             position: absolute;
             top: 100px;
-            left: 40%;
+            left: 42%;
             font-size: 80px;
             color: #f00;
             cursor: pointer;
@@ -46,10 +44,11 @@
             font-size: 120px;
             color: red;
             text-align: center;
+            margin-left: 200px;
         }
     </style>
 </head>
-<body>
+<body style="">
 <jsp:include page="/common/header.jsp"></jsp:include>
 <div class="container-fluid">
     <div class="row">
@@ -62,11 +61,15 @@
                 <div class="panel-body">
                     <br><br><br>
                     <div>
-
                         <button id="btn">start</button>
+                        <button type="button" class="btn btn-info" onclick="stuAddFive()" style="float: right"
+                                id="stuAddFive"><i class="glyphicon glyphicon-plus"></i>5分
+                        </button>
+                        <button type="button" class="btn btn-primary" onclick="stuAddTen()" style="float: right"
+                                id="stuAddTen"><i class="glyphicon glyphicon-plus">10分</i></button>
+                        <button type="button" class="btn btn-warning" onclick="stuSubFive()" style="float: right"
+                                id="stuSubFive"><i class="glyphicon glyphicon-minus">5分</i></button>
                         <div id="con">开始</div>
-
-
                     </div>
                     <br>
                     <hr style="clear:both;">
@@ -77,14 +80,46 @@
     </div>
 </div>
 <script>
+
+
+    var sname = null;
+    var loadingIndex = null;
+    var arr = null;
+    var len = null;
+
+    $(function () {
+        $.ajax({
+            url: "${APP_PATH}/teacher/dianMingByAjax",
+            beforeSend: function () {
+                loadingIndex = layer.msg('加载名单中，请稍后~~', {icon: 16});
+            },
+            success: function (result) {
+                if (result.success) {
+                    arr = result.data;
+                    len = result.data.length;
+                    layer.open()
+                    layer.msg("加载名单成功！", { icon: 6, shift: 3}, function () {
+                    });
+                } else {
+                    layer.msg("加载名单失败了，请联系管理员！", {time: 3000, icon: 5, shift: 6}, null);
+                }
+
+            },
+            complete: function () {
+                layer.close(loadingIndex);
+            }
+        })
+    });
+
+
     var btn = document.getElementById('btn');
     var con = document.getElementById('con');
-    var arr = [
-        '张馨丹', '李青龙', '郭磊', '张晨', '王耀星', '王丽欢', '冯伟光', '张鑫磊', '王衡', '武?', '霍鑫星', '王潇', '梁晨宁', '韩钧宇', '周浩', '张庆庆', '李帅', '张玉辉', '高蕊慧', '董钰钿', '索夏雨', '唐争强', '刘繁星', '李静妍', '张艳红', '高学光', '王鑫', '韩舒畅', '赵财进', '王宁宁', '顾倩', '李鹏', '王荐', '尹晓雄', '王福森', '石浩琦', "郜仲华", "刘馥泰"
-    ];
+
+
     var timer = null;
-    var len = arr.length;
+
     var flag = 0;
+
     //添点击事件
     btn.onclick = click;
 
@@ -93,8 +128,10 @@
             btn.innerHTML = 'stop';
             flag = 1;
             timer = setInterval(function () {
-                var x = Math.floor(Math.random() * len); //0-38
+                var x = Math.floor(Math.random() * len);
+                sname = arr[x];
                 con.innerHTML = arr[x];
+
             }, 20);
         } else {
             flag = 0;
@@ -103,12 +140,88 @@
         }
     }
 
-    document.onkeydown = function (evt) {
+    /*document.onkeydown = function (evt) {
         var event = evt || window.event;
         var eCode = event.keyCode || evetn.which;
         if (eCode == 13 || 32) {
             click();
         }
+    }*/
+
+    function stuAddFive() {
+        $.ajax({
+            url: "${APP_PATH}/teacher/stuAddFiveByAjax",
+            data: {
+                sname: sname
+            },
+            method: 'get',
+            beforeSend: function () {
+                loadingIndex = layer.msg(sname + "加5分中，请稍后~~", {time:3000 ,icon: 16});
+            },
+            success: function (result) {
+
+                if (result.success) {
+                   layer.msg(sname + "加5分成功！", {time: 3000, icon: 6, shift: 3}, function () {
+                    });
+                } else {
+                    layer.msg("加分失败了，请联系管理员！", {time: 3000, icon: 5, shift: 6}, null);
+                }
+
+            },
+            complete: function () {
+                layer.close(loadingIndex);
+            }
+        });
+    }
+
+    function stuAddTen() {
+        $.ajax({
+            url: "${APP_PATH}/teacher/stuAddTenByAjax",
+            data: {
+                sname: sname
+            },
+            method: 'get',
+            beforeSend: function () {
+                loadingIndex = layer.msg(sname + "加10分中，请稍后~~", {icon: 16});
+            },
+            success: function (result) {
+                if (result.success) {
+                    layer.msg(sname + "加10分成功！", {time: 3000, icon: 6, shift: 3}, function () {
+                    });
+                } else {
+                    layer.msg("加分失败了，请联系管理员！", {time: 3000, icon: 5, shift: 6}, null);
+                }
+
+            },
+            complete: function () {
+                layer.close(loadingIndex);
+            }
+        });
+    }
+
+    function stuSubFive() {
+        $.ajax({
+            url: "${APP_PATH}/teacher/stuSubFiveByAjax",
+            data: {
+                sname: sname
+            },
+            method: 'get',
+            beforeSend: function () {
+                loadingIndex = layer.msg(sname + "减5分中，请稍后~~", {icon: 16});
+            },
+            success: function (result) {
+                if (result.success) {
+                    layer.msg(sname + "减5分成功！", {time: 3000, icon: 6, shift: 3}, function () {
+                    });
+                } else {
+                    layer.msg("加分失败了，请联系管理员！", {time: 3000, icon: 5, shift: 6}, null);
+                }
+
+            },
+            complete: function () {
+                layer.close(loadingIndex);
+            }
+        });
     }
 </script>
 </body>

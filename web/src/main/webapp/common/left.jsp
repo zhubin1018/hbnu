@@ -9,9 +9,14 @@
 
             <li class="list-group-item tree-closed">
                 <span>
-                        <a href="${APP_PATH}/teacher/toSubract"><i class="glyphicon glyphicon-ok"></i> 考勤记录</a>
+                        <a href="${APP_PATH}/teacher/toSubract"><i class="glyphicon glyphicon-ok"></i> 上课点名</a>
                 </span>
             </li>
+            <%--<li class="list-group-item tree-closed">
+                <span>
+                        <a href="${APP_PATH}/teacher/toCheckMingXi"><i class="glyphicon glyphicon-list-alt"></i> 考勤明细</a>
+                </span>
+            </li>--%>
             <li class="list-group-item tree-closed">
                 <span>
                         <a href="${APP_PATH}/toDianMing"><i class="glyphicon glyphicon-user"></i> 点名答题</a>

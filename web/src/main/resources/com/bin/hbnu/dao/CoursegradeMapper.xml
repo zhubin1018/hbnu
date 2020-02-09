@@ -16,12 +16,14 @@ namespace : 命名空间，根据namespace区分不同的sql映射文件的。�
     <update id="updateCourByCour">
     UPDATE coursegrade
     SET
+    qingjia = #{qingjia},
+    subtract = #{subtract},
     agrade = #{agrade} ,
     bgrade = #{bgrade} ,
     grade = #{grade}
     WHERE id = #{id}
 </update>
-<!--List<Coursegrade> findBy(@Param("tname")String tname, @Param("stuLog")String stuLog, @Param("sname")String stuName)-->
+    <!--List<Coursegrade> findBy(@Param("tname")String tname, @Param("stuLog")String stuLog, @Param("sname")String stuName)-->
     <select id="findBy" resultType="com.bin.hbnu.bean.Coursegrade">
         SELECT * FROM coursegrade
 
@@ -51,4 +53,27 @@ namespace : 命名空间，根据namespace区分不同的sql映射文件的。�
         WHERE tname = #{tname}
     </select>
 
+    <!--Coursegrade selectCourByTnameSname(String tname, String sname);-->
+    <select id="selectCourByTnameSname" resultType="com.bin.hbnu.bean.Coursegrade">
+        SELECT * FROM coursegrade
+        WHERE tname = #{tname} AND sname = #{sname}
+    </select>
+
+    <!--Coursegrade finCourBySidTname(@Param("sid") Integer sid, @Param("tname") String tname);-->
+    <select id="finCourBySidTname" resultType="com.bin.hbnu.bean.Coursegrade">
+        SELECT * FROM coursegrade
+        WHERE tname = #{tname} AND sid = #{sid}
+    </select>
+
+    <!--void updateCourByCourCheck(Coursegrade coursegrade);-->
+    <update id="updateCourByCourCheck">
+    UPDATE coursegrade
+    SET
+    qingjia = #{qingjia},
+    subtract = #{subtract},
+    agrade = #{agrade} ,
+    bgrade = #{bgrade} ,
+    grade = #{grade}
+    WHERE id = #{id}
+    </update>
 </mapper>

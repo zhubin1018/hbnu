@@ -29,10 +29,11 @@ public class Coursegrade {
     private String tname;
     /*课程*/
     private String course;
-    /*加分项*/
-    private String addgrade;
-    /*减分项*/
-    private String subtract;
+
+    /*缺勤数*/
+    private Integer subtract;
+    /*请假数*/
+    private Integer qingjia;
     /*平时成绩*/
     private String agrade;
     /*期末考试成绩*/
@@ -41,4 +42,9 @@ public class Coursegrade {
     private String grade;
     /*期末成绩考试成绩比例*/
     private String proportion;
+
+
+    /*dateObj*/
+    private String beiZhu;
+    private String dateObj;
 }

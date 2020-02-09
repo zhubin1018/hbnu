@@ -32,4 +32,16 @@ public class CoursegradeServiceImpl implements CoursegradeService {
     public List<Coursegrade> selectCourByTname(String tname) {
         return coursegradeMapper.selectCourByTname(tname);
     }
+
+    public Coursegrade selectCourByTnameSname(String tname, String sname) {
+       return coursegradeMapper.selectCourByTnameSname(tname,sname);
+    }
+
+    public Coursegrade finCourBySidTname(Integer sid, String tname) {
+        return coursegradeMapper.finCourBySidTname(sid,tname);
+    }
+
+    public void updateCourByCourCheck(Coursegrade coursegrade) {
+        coursegradeMapper.updateCourByCourCheck(coursegrade);
+    }
 }

@@ -22,16 +22,37 @@
         <property name="maxUploadSize" value="#{20 * 1024 * 1024}"></property>
     </bean>
     <!--国际化-->
-   <!-- <bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
-        <property name="basename" value="i18n"></property>
-    </bean>-->
+    <!-- <bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
+         <property name="basename" value="i18n"></property>
+     </bean>-->
     <!--处理静态资源-->
     <mvc:default-servlet-handler></mvc:default-servlet-handler>
     <!--标配-->
     <mvc:annotation-driven></mvc:annotation-driven>
 
     <!-- 调度-->
+    <mvc:view-controller path="toLogin" view-name="login"></mvc:view-controller>
     <mvc:view-controller path="/toTeacherMain" view-name="teacherMain"></mvc:view-controller>
     <mvc:view-controller path="/toDianMing" view-name="teacherDianMing"></mvc:view-controller>
 
+    <!--配置拦截器-->
+    <mvc:interceptors>
+        <mvc:interceptor>
+            <mvc:mapping path="/**"/>
+            <!--排除不去拦截的路径-->
+            <mvc:exclude-mapping path="/bootstrap/**"></mvc:exclude-mapping>
+            <mvc:exclude-mapping path="/css/**"></mvc:exclude-mapping>
+            <mvc:exclude-mapping path="/fonts/**"></mvc:exclude-mapping>
+            <mvc:exclude-mapping path="/img/**"></mvc:exclude-mapping>
+            <mvc:exclude-mapping path="/jquery/**"></mvc:exclude-mapping>
+            <mvc:exclude-mapping path="/layer/**"></mvc:exclude-mapping>
+            <mvc:exclude-mapping path="/script/**"></mvc:exclude-mapping>
+            <mvc:exclude-mapping path="/ztree/**"></mvc:exclude-mapping>
+
+            <mvc:exclude-mapping path="/toLogin"></mvc:exclude-mapping>
+            <mvc:exclude-mapping path="/doAjaxLogin"></mvc:exclude-mapping>
+
+            <bean class="com.bin.hbnu.interceptor.LoginInterceptor"></bean>
+        </mvc:interceptor>
+    </mvc:interceptors>
 </beans>

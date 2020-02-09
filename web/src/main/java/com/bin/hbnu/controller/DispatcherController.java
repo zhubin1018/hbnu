@@ -27,24 +27,22 @@ public class DispatcherController {
     @Autowired
     private StudentService studentService;
 
+    @RequestMapping("/logout")
+    public String logout(HttpSession session){
+        session.invalidate();// 使Session中的数据失效
+        return "redirect:/toLogin";
+    }
 
     @ResponseBody
     @RequestMapping("/doAjaxLogin")
     public AjaxResult doAjaxLogin(User user, HttpSession session) {
-        System.out.println("=============================================================");
-        System.out.println("DispatcherController.doAjaxLogin  1");
         System.out.println(user.getUserType());
         String userName = null;
         // 创建AjaxResult对象
         AjaxResult ajaxResult = new AjaxResult();
         if (user.getUserType().equals("teacher")) {
-           /* user.setLoginAccount("'"+user.getLoginAccount()+"'");
-            user.setPassword("'"+user.getPassword()+"'");*/
-            System.out.println("DispatcherController.doAjaxLogin  2");
             Teacher teacher = teacherService.validateTeacher(user);
-            System.out.println("============================" + teacher);
             if (teacher != null) {
-                System.out.println("DispatcherController.doAjaxLogin  3");
                 userName = teacher.getTname();
                 ajaxResult.setSuccess(true);
                 session.setAttribute("teacher", teacher);

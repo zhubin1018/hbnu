@@ -14,4 +14,10 @@ public interface CoursegradeService {
     Coursegrade findByTidSid(Integer tid, Integer sid);
 
     List<Coursegrade> selectCourByTname(String tname);
+
+    Coursegrade selectCourByTnameSname(String tname, String sname);
+
+    Coursegrade finCourBySidTname(Integer sid, String tname);
+
+    void updateCourByCourCheck(Coursegrade coursegrade);
 }

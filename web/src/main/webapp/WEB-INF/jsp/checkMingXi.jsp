@@ -71,40 +71,27 @@
                             <thead>
                             <tr>
                                 <th>#</th>
-                                <th>学号</th>
+                                <th>日期</th>
                                 <th>姓名</th>
-                                <th>性别</th>
-                                <th>授课老师</th>
                                 <th>课程</th>
-                                <th>缺勤数</th>
-                                <th>平时分</th>
-                                <th>卷面分</th>
-                                <th>成绩比例</th>
-                                <th>期末成绩</th>
+                                <th>授课老师</th>
+                                <th>备注</th>
                                 <th>操作</th>
                             </tr>
                             </thead>
                             <tbody>
-                            <c:forEach var="coursegrade" items="${requestScope.info.list}" varStatus="status">
+                            <c:forEach var="list" items="${requestScope.info.list}" varStatus="status">
                                 <tr>
                                     <td>${status.index + 1}</td>
-                                    <td>${coursegrade.stuLoginAccount}</td>
-                                    <td>${coursegrade.sname}</td>
-                                    <td>${coursegrade.ssex}</td>
-                                    <td>${coursegrade.tname}</td>
-                                    <td>${coursegrade.course}</td>
-
-                                    <td>
-                                            ${coursegrade.subtract}
-                                    </td>
-                                    <td>${coursegrade.agrade}</td>
-                                    <td>${coursegrade.bgrade}</td>
-                                    <td>${coursegrade.proportion}</td>
-                                    <td>${coursegrade.grade}</td>
+                                    <td>${list.dateObj}</td>
+                                    <td>${list.sname}</td>
+                                    <td>${list.course}</td>
+                                    <td>${list.tname}</td>
+                                    <td>${list.beiZhu}</td>
                                     <td>
                                         <button type="button" class="btn btn-info">
-                                            <a href="${APP_PATH}/teacher/toTeacherEndit?sid=${coursegrade.sid}&tid=${coursegrade.tid}&pageNo=${requestScope.pageNo}&stuName=${requestScope.stuName}&stuLog=${requestScope.stuLog}">
-                                            <i class="glyphicon glyphicon-wrench"></i>修改</a>
+                                            <a href="${APP_PATH}/teacher/toTeacherEndit?sid=${list.sid}&tid=${list.tid}&pageNo=${requestScope.pageNo}&stuName=${list.sname}">
+                                                <i class="glyphicon glyphicon-wrench"></i>修改</a>
                                         </button>
                                     </td>
                                 </tr>
@@ -118,7 +105,7 @@
                                     <ul class="pagination">
                                         <c:if test="${requestScope.info.hasPreviousPage}">
                                             <li>
-                                                <a href="${APP_PATH}/teacher/selectLike?pageNo=${requestScope.info.prePage}&stuName=${requestScope.stuName}&stuLog=${requestScope.stuLog}">上一页</a>
+                                                <a href="${APP_PATH}/teacher/selectLike?pageNo=${requestScope.info.prePage}">上一页</a>
                                             </li>
                                         </c:if>
                                         <c:if test="${!requestScope.info.hasPreviousPage}">
@@ -131,14 +118,14 @@
                                                         class="sr-only">(current)</span></a></li>
                                             </c:if>
                                             <c:if test="${num != requestScope.info.pageNum}">
-                                                <li><a href="${APP_PATH}/teacher/selectLike?pageNo=${num}&stuName=${requestScope.stuName}&stuLog=${requestScope.stuLog}">${num}</a>
+                                                <li><a href="${APP_PATH}/teacher/selectLike?pageNo=${num}">${num}</a>
                                                 </li>
                                             </c:if>
                                         </c:forEach>
 
                                         <c:if test="${requestScope.info.hasNextPage}">
                                             <li>
-                                                <a href="${APP_PATH}/teacher/selectLike?pageNo=${requestScope.info.nextPage}&stuName=${requestScope.stuName}&stuLog=${requestScope.stuLog}">下一页</a>
+                                                <a href="${APP_PATH}/teacher/selectLike?pageNo=${requestScope.info.nextPage}">下一页</a>
                                             </li>
                                         </c:if>
                                         <c:if test="${!requestScope.info.hasNextPage}">
@@ -160,42 +147,6 @@
 <script type="text/javascript">
 
 
-    function addOnclick(obj) {
-        var add = $(obj).val();
-        var addgrade = $("#addgrade").val();
-        var sid = $("#sid").val();
-        var tid = $("#tid").val();
-
-        var loadingIndex = null;
-
-        $.ajax({
-            url: "${APP_PATH}/teacher/ajaxAdd",
-            method: 'GET',
-            data: {
-                add: add,
-                addgrade: addgrade,
-                sid: sid,
-                tid: tid
-            },
-            beforeSend: function () {
-                loadingIndex = layer.msg('正在加分，请稍候~~', {icon: 16});
-            },
-            success: function (result) {
-                if (result.success) {
-                    layer.msg("加分成功！", {time: 3000, icon: 6, shift: 4}, function () {
-                        // 跳转页面
-                        window.location.href = "${APP_PATH}/toTeacherMain";
-                    });
-                } else {
-                    layer.msg("加分失败了，请联系管理员！", {time: 3000, icon: 5, shift: 6}, null);
-                }
-            },
-            complete: function () {
-                layer.close(loadingIndex);
-            }
-        });
-
-    }
 </script>
 </body>
 </html>

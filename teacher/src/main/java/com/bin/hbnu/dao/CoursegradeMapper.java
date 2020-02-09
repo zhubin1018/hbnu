@@ -15,4 +15,10 @@ public interface CoursegradeMapper {
     Coursegrade findByTidSid(@Param("tid") Integer tid, @Param("sid") Integer sid);
 
     List<Coursegrade> selectCourByTname(@Param("tname") String tname);
+
+    Coursegrade selectCourByTnameSname(@Param("tname") String tname, @Param("sname") String sname);
+
+    Coursegrade finCourBySidTname(@Param("sid") Integer sid, @Param("tname") String tname);
+
+    void updateCourByCourCheck(Coursegrade coursegrade);
 }
