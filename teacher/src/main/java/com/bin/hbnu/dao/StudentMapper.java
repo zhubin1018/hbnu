@@ -2,6 +2,7 @@ package com.bin.hbnu.dao;
 
 import com.bin.hbnu.bean.Coursegrade;
 import com.bin.hbnu.bean.Student;
+import com.bin.hbnu.bean.User;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 
@@ -21,4 +22,12 @@ public interface StudentMapper {
     List<Student> selectStudentByTid(Integer tid);
 
     List<Coursegrade> selectCoursegradeByids(@Param("tid") Integer tid);
+
+    Student validateStudent(User user);
+
+    Student validateParents(User user);
+
+    void updatePassword(@Param("password")String password, @Param("sid")Integer sid);
+
+    void updateParents_Password(@Param("parents_password") String password, @Param("sid")Integer sid);
 }

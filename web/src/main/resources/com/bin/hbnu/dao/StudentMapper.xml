@@ -8,4 +8,30 @@
     coursegrade
     WHERE tid = #{tid}
 </select>
+    <!--Student validateStudent(User user);-->
+    <select id="validateStudent" resultType="com.bin.hbnu.bean.Student">
+        SELECT * FROM student
+        WHERE loginAccount = #{loginAccount} AND password = #{password}
+    </select>
+    <!--Student validateParents(User user);-->
+    <select id="validateParents" resultType="com.bin.hbnu.bean.Student">
+        SELECT * FROM student
+        WHERE loginAccount = #{loginAccount} AND parents_password = #{password}
+    </select>
+    <!--void updatePassword(String password, Integer sid);-->
+    <update id="updatePassword">
+        UPDATE student
+        SET
+        password = #{password}
+        WHERE
+        sid = #{sid}
+    </update>
+    <!--void updateParents_Password(@Param("parents_password") String password, @Param("sid")Integer sid);-->
+    <update id="updateParents_Password">
+        UPDATE student
+        SET
+        parents_password = #{parents_password}
+        WHERE
+        sid = #{sid}
+    </update>
 </mapper>

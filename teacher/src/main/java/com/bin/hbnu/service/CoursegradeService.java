@@ -20,4 +20,8 @@ public interface CoursegradeService {
     Coursegrade finCourBySidTname(Integer sid, String tname);
 
     void updateCourByCourCheck(Coursegrade coursegrade);
+
+    List<Coursegrade> findCourByStuLog(String loginAccount);
+
+    List<Coursegrade> StufindBy(String sname, String course, String tname);
 }

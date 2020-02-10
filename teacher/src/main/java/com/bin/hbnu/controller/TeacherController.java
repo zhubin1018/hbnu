@@ -76,10 +76,12 @@ public class TeacherController {
         Integer agrade = Integer.parseInt(coursegrade.getAgrade());
         if (agrade > 100) {
             agrade = 100;
+            coursegrade.setBgrade(agrade+"");
         }
         Integer bgrade = Integer.parseInt(coursegrade.getBgrade());
         if (bgrade > 100) {
             bgrade = 100;
+            coursegrade.setBgrade(bgrade+"");
         }
         Double proportion = Double.parseDouble(coursegrade.getProportion());
         String grade = Math.round(agrade * proportion + bgrade * (1 - proportion)) + "";
@@ -287,7 +289,7 @@ public class TeacherController {
 
 
         PageInfo<Coursegrade> info = new PageInfo<Coursegrade>(coursegrades);
-        map.put("info",info);
+        map.put("info", info);
         map.put("dateObj", date);
         return "subract";
     }

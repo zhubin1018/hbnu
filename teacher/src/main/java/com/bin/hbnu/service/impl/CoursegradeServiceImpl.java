@@ -44,4 +44,12 @@ public class CoursegradeServiceImpl implements CoursegradeService {
     public void updateCourByCourCheck(Coursegrade coursegrade) {
         coursegradeMapper.updateCourByCourCheck(coursegrade);
     }
+
+    public List<Coursegrade> findCourByStuLog(String loginAccount) {
+        return coursegradeMapper.findCourByStuLog(loginAccount);
+    }
+
+    public List<Coursegrade> StufindBy(String sname, String course, String tname) {
+        return coursegradeMapper.StufindBy(sname,course,tname);
+    }
 }

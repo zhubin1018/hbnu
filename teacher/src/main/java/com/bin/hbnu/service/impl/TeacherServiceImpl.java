@@ -35,6 +35,9 @@ public class TeacherServiceImpl implements TeacherService {
         teacherMapper.updateCoursegrade(coursegrade);
     }
 
+    public void updateCouresAndPassword(String course, String password,Integer tid) {
+        teacherMapper.updateCouresAndPassword(course,password,tid);
+    }
 
 
 }

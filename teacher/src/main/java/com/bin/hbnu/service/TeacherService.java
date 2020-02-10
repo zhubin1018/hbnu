@@ -20,4 +20,5 @@ public interface TeacherService {
     void updateCoursegrade(Coursegrade coursegradeByIds);
 
 
+    void updateCouresAndPassword(String course, String password,Integer tid);
 }

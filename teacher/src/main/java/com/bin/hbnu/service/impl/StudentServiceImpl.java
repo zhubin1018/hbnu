@@ -2,6 +2,7 @@ package com.bin.hbnu.service.impl;
 
 import com.bin.hbnu.bean.Coursegrade;
 import com.bin.hbnu.bean.Student;
+import com.bin.hbnu.bean.User;
 import com.bin.hbnu.dao.StudentMapper;
 import com.bin.hbnu.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,5 +31,21 @@ public class StudentServiceImpl implements StudentService {
 
     public List<Coursegrade> selectCoursegradeByids(Integer tid) {
         return studentMapper.selectCoursegradeByids(tid);
+    }
+
+    public Student validateStudent(User user) {
+        return studentMapper.validateStudent(user);
+    }
+
+    public Student validateParents(User user) {
+        return studentMapper.validateParents(user);
+    }
+
+    public void updatePassword(String password, Integer sid) {
+        studentMapper.updatePassword(password,sid);
+    }
+
+    public void updateParents_Password(String password, Integer sid) {
+        studentMapper.updateParents_Password(password,sid);
     }
 }

@@ -20,4 +20,5 @@ public class Student {
     private Integer tid;
     private String loginAccount;
     private String password;
+    private String parents_password;
 }

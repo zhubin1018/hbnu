@@ -44,7 +44,7 @@ namespace : 命名空间，根据namespace区分不同的sql映射文件的。�
     <!--Coursegrade findByTidSid(Integer tid, Integer sid);-->
     <select id="findByTidSid" resultType="com.bin.hbnu.bean.Coursegrade">
         SELECT * FROM coursegrade
-        WHERE sid = #{sid} AND tid =#{tid}
+        WHERE sid = #{sid} AND tid = #{tid}
     </select>
 
     <!--List<Coursegrade> selectCourByTname(@Param("tname") String tname);-->
@@ -76,4 +76,27 @@ namespace : 命名空间，根据namespace区分不同的sql映射文件的。�
     grade = #{grade}
     WHERE id = #{id}
     </update>
+
+    <!--List<Coursegrade> findCourByStuLog(@Param("stuLoginAccount") String loginAccount);-->
+    <select id="findCourByStuLog" resultType="com.bin.hbnu.bean.Coursegrade">
+        SELECT * FROM coursegrade
+        WHERE stuLoginAccount = #{stuLoginAccount}
+    </select>
+
+    <!--List<Coursegrade> StufindBy(@Param("sname") String sname, @Param("course")String course, @Param("tname")String tname);-->
+    <select id="StufindBy" resultType="com.bin.hbnu.bean.Coursegrade">
+        SELECT * FROM coursegrade
+
+        <where>
+            <if test="true">
+                AND sname = #{sname}
+            </if>
+            <if test="course != null and course.trim() != ''">
+                AND course LIKE concat('%', #{course}, '%')
+            </if>
+            <if test="tname != null and tname.trim() != ''">
+                AND tname LIKE concat('%', #{tname}, '%')
+            </if>
+        </where>
+    </select>
 </mapper>

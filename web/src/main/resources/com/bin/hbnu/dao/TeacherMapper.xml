@@ -33,6 +33,15 @@
 
 
 
+<!--void updateCouresAndPassword(@Param("course") String course, @Param("password") String password,@Param("tid")Integer tid)-->
+<update id="updateCouresAndPassword">
+UPDATE teacher
+        SET
+        course = #{course},
+        password = #{password}
+        WHERE tid = #{tid}
+</update>
+
 
 
     <resultMap id="testResultMap"  type="com.bin.hbnu.bean.Teacher">

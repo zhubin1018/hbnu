@@ -15,7 +15,7 @@
 
     </style>
 </head>
-<body>
+<body style="height:100%;">
 <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
     <div class="container">
         <div class="navbar-header">
@@ -88,7 +88,7 @@
             return;
         }
 
-        var loadingIndex = null;
+       var loadingIndex = null;
         // 使用 ajax 进行登录
         $.ajax({
             // url 表示请求提交的地址
@@ -106,7 +106,8 @@
                 if ( result.success ) {
                     window.location.href = "toMain";
                 } else {
-                    layer.msg("用户名或密码不正确！", {time:3000, icon:5, shift:6}, null);
+                    layer.msg("账号密码错误!!!！", {time:3000, icon:5, shift:6 }, function(){
+                    });
                 }
             },
             // 只要请求完成了都会执行，请求承购失败都会执行
@@ -115,5 +116,7 @@
             }
         });
     }
+
+
 </script>
 </html>

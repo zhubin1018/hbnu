@@ -57,7 +57,8 @@
                         </div>
                         <div class="form-group">
                             <label for="sname">姓名</label>
-                            <input type="text" class="form-control" id="sname" name="sname" value="${requestScope.coursegrade.sname}"
+                            <input type="text" class="form-control" id="sname" name="sname"
+                                   value="${requestScope.coursegrade.sname}"
                                    disabled>
                         </div>
                         <div class="form-group">
@@ -82,11 +83,15 @@
                         </div>
                         <div class="form-group">
                             <label for="grade">期末成绩</label>
-                            <input type="text" class="form-control" id="grade" value="${requestScope.coursegrade.grade}" name="grade"
+                            <input type="text" class="form-control" id="grade" value="${requestScope.coursegrade.grade}"
+                                   name="grade"
                                    disabled>
                         </div>
-                        <button type="submit" class="btn btn-success"><i class="glyphicon glyphicon-edit"></i> 修改</button>
-                        <button type="button" onclick="resetForm()" class="btn btn-danger"><i class="glyphicon glyphicon-refresh"></i> 重置</button>
+                        <button type="button" onclick="updateCoursegrade()" class="btn btn-success"><i class="glyphicon glyphicon-edit"></i> 修改
+                        </button>
+                        <button type="button" onclick="resetForm()" class="btn btn-danger"><i
+                                class="glyphicon glyphicon-refresh"></i> 重置
+                        </button>
                     </form>
                 </div>
             </div>
@@ -97,8 +102,9 @@
 <script type="text/javascript">
 
     function updateCoursegrade() {
+
         // 获取用户数据的数据
-        /*var agrade = $("#agrade").val();
+        var agrade = $("#agrade").val();
         var bgrade = $("#bgrade").val();
         if (agrade > 100) {
             layer.msg("平时分不能大于100！", {time: 3000, icon: 5, shift: 6}, null);
@@ -108,8 +114,8 @@
             layer.msg("成绩不能大于100！", {time: 3000, icon: 5, shift: 6}, null);
             return;
         }
-         var form =   document.getElementById('form');
-        form.submit();*/
+        var form = document.getElementById('form');
+        form.submit();
     }
 
 

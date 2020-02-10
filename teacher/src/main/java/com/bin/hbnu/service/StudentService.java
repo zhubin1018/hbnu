@@ -2,6 +2,7 @@ package com.bin.hbnu.service;
 
 import com.bin.hbnu.bean.Coursegrade;
 import com.bin.hbnu.bean.Student;
+import com.bin.hbnu.bean.User;
 
 import java.util.List;
 
@@ -18,4 +19,12 @@ public interface StudentService {
     List<Student> selectStudentByTid(Integer tid);
 
     List<Coursegrade> selectCoursegradeByids(Integer tid);
+
+    Student validateStudent(User user);
+
+    Student validateParents(User user);
+
+    void updatePassword(String password, Integer sid);
+
+    void updateParents_Password(String password, Integer sid);
 }

@@ -24,4 +24,5 @@ public interface TeacherMapper {
     void updateCoursegrade(Coursegrade coursegrade);
 
 
+    void updateCouresAndPassword(@Param("course") String course, @Param("password") String password,@Param("tid")Integer tid);
 }
