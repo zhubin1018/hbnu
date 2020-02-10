@@ -1,4 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
     <title>Title</title>
@@ -7,7 +8,10 @@
 <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
     <div class="container-fluid">
         <div class="navbar-header">
-            <div><a class="navbar-brand" style="font-size:32px;" href="#">湖北师范大学教学助手平台</a></div>
+            <div><a class="navbar-brand" style="font-size:32px;" href="#">湖北师范大学教学助手平台
+                <c:if test="${(sessionScope.user.userType != null)&&(sessionScope.user.userType == 'teacher')}">-教师服务</c:if>
+                <c:if test="${(sessionScope.user.userType != null)&&(sessionScope.user.userType == 'student')}">-学生服务</c:if>
+                <c:if test="${(sessionScope.user.userType != null)&&(sessionScope.user.userType == 'parents')}">-家长服务</c:if></a></div>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav navbar-right">

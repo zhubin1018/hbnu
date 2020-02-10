@@ -81,7 +81,7 @@
                                 <th>卷面分</th>
                                 <th>成绩比例</th>
                                 <th>期末成绩</th>
-                                <th>操作</th>
+                                <%--<th>操作</th>--%>
                             </tr>
                             </thead>
                             <tbody>
@@ -101,12 +101,12 @@
                                     <td>${coursegrade.bgrade}</td>
                                     <td>${coursegrade.proportion}</td>
                                     <td>${coursegrade.grade}</td>
-                                    <td>
+                                    <%--<td>
                                         <button type="button" class="btn btn-info">
                                             <a href="${APP_PATH}/teacher/toTeacherEndit?sid=${coursegrade.sid}&tid=${coursegrade.tid}&pageNo=${requestScope.pageNo}&tname=${requestScope.tname}&course=${requestScope.course}">
                                                 <i class="glyphicon glyphicon-wrench"></i>修改</a>
                                         </button>
-                                    </td>
+                                    </td>--%>
                                 </tr>
                             </c:forEach>
 
@@ -114,7 +114,7 @@
                             <c:if test="${requestScope.info != null}">
                             <tfoot>
                             <tr>
-                                <td colspan="12" style="text-align: center">
+                                <td colspan="11" style="text-align: center">
                                     <ul class="pagination">
                                         <c:if test="${requestScope.info.hasPreviousPage}">
                                             <li>

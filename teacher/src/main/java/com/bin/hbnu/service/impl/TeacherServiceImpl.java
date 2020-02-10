@@ -39,5 +39,13 @@ public class TeacherServiceImpl implements TeacherService {
         teacherMapper.updateCouresAndPassword(course,password,tid);
     }
 
+    public Teacher selectLikeCourse(String course) {
+        return teacherMapper.selectLikeCourse(course);
+    }
+
+    public Teacher selectLikeTname(String tname) {
+        return teacherMapper.selectLikeTname(tname);
+    }
+
 
 }

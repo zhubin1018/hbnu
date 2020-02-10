@@ -64,11 +64,13 @@
                                    value="${requestScope.name}"
                                    disabled>
                         </div>
-                        <c:if test="${(requestScope.user.userType).equals('student') || (requestScope.user.userType).equals('parents')}">
+                        <c:if test="${(requestScope.user.userType).equals('student')||(requestScope.user.userType).equals('parents')}">
                             <div class="form-group">
                                 <label for="ssex">性别</label>
                                 <input type="text" class="form-control" id="ssex" name="ssex"
-                                       value="${requestScope.ssex}">
+                                       value="${requestScope.ssex}" <c:if test="${(requestScope.user.userType).equals('parents')}">
+                                       disabled
+                                </c:if>>
                             </div>
                         </c:if>
                         <c:if test="${(requestScope.user.userType).equals('teacher')}">

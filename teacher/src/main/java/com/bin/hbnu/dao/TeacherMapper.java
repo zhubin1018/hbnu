@@ -25,4 +25,8 @@ public interface TeacherMapper {
 
 
     void updateCouresAndPassword(@Param("course") String course, @Param("password") String password,@Param("tid")Integer tid);
+
+    Teacher selectLikeCourse(@Param("course") String course);
+
+    Teacher selectLikeTname(@Param("tname")String tname);
 }

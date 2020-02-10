@@ -1,5 +1,6 @@
 package com.bin.hbnu.service.impl;
 
+import com.bin.hbnu.bean.CheckObj;
 import com.bin.hbnu.bean.Coursegrade;
 import com.bin.hbnu.bean.Student;
 import com.bin.hbnu.bean.User;
@@ -47,5 +48,14 @@ public class StudentServiceImpl implements StudentService {
 
     public void updateParents_Password(String password, Integer sid) {
         studentMapper.updateParents_Password(password,sid);
+    }
+
+
+    public List<CheckObj> selectCheckBySid(Integer sid ,Integer thid) {
+        return studentMapper.selectCheckBySid(sid,thid);
+    }
+
+    public Coursegrade selectCourByids(Integer tid, Integer sid) {
+        return studentMapper.selectCourByids(tid,sid);
     }
 }

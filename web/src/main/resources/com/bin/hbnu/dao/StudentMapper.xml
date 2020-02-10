@@ -34,4 +34,30 @@
         WHERE
         sid = #{sid}
     </update>
+
+
+    <!--List<CheckObj> selectCheckBySid(@Param("sid")Integer sid);
+    List<CheckObj> selectCheckBySid(@Param("sid")Integer sid,@Param("tid")Integer thid);-->
+    <select id="selectCheckBySid" resultType="com.bin.hbnu.bean.CheckObj">
+        SELECT * FROM checkObj
+        <where>
+            <if test="true">
+                AND sid = #{sid}
+            </if>
+            <if test="tid != null and tid != 0">
+                AND tid LIKE concat('%', #{tid}, '%')
+            </if>
+        </where>
+    </select>
+    <!--Coursegrade selectCourByids(@Param("tid")Integer tid, @Param("sid")Integer sid);-->
+    <select id="selectCourByids" resultType="com.bin.hbnu.bean.Coursegrade">
+        SELECT * FROM coursegrade WHERE sid = #{sid} AND tid = #{tid}
+    </select>
+
+
+
+
+
+
+
 </mapper>

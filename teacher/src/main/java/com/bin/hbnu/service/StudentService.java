@@ -1,5 +1,6 @@
 package com.bin.hbnu.service;
 
+import com.bin.hbnu.bean.CheckObj;
 import com.bin.hbnu.bean.Coursegrade;
 import com.bin.hbnu.bean.Student;
 import com.bin.hbnu.bean.User;
@@ -27,4 +28,9 @@ public interface StudentService {
     void updatePassword(String password, Integer sid);
 
     void updateParents_Password(String password, Integer sid);
+
+
+    List<CheckObj> selectCheckBySid(Integer sid,Integer thid);
+
+    Coursegrade selectCourByids(Integer tid, Integer sid);
 }

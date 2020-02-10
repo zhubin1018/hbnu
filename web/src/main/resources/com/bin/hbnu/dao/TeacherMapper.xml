@@ -42,6 +42,15 @@ UPDATE teacher
         WHERE tid = #{tid}
 </update>
 
+<!--Teacher selectLikeCourse(@Param("course") String course);-->
+    <select id="selectLikeCourse" resultType="com.bin.hbnu.bean.Teacher">
+        SELECT * FROM teacher WHERE course LIKE concat('%', #{course}, '%')
+    </select>
+<!--Teacher selectLikeTname(@Param("tname")String tname);-->
+    <select id="selectLikeTname" resultType="com.bin.hbnu.bean.Teacher">
+        SELECT * FROM teacher WHERE tname LIKE concat('%', #{tname}, '%')
+    </select>
+
 
 
     <resultMap id="testResultMap"  type="com.bin.hbnu.bean.Teacher">

@@ -21,4 +21,8 @@ public interface TeacherService {
 
 
     void updateCouresAndPassword(String course, String password,Integer tid);
+
+    Teacher selectLikeCourse(String course);
+
+    Teacher selectLikeTname(String tname);
 }

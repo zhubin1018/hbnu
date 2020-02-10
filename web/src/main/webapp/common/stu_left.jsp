@@ -15,7 +15,7 @@
 
             <li class="list-group-item tree-closed">
                 <span>
-                        <a href="${APP_PATH}/"><i class="glyphicon glyphicon-list-alt"></i> 考勤明细</a>
+                        <a href="${APP_PATH}/student/mingXi"><i class="glyphicon glyphicon-list-alt"></i> 考勤明细</a>
                 </span>
             </li>
         </ul>

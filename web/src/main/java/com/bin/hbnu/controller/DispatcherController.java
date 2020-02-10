@@ -138,7 +138,7 @@ public class DispatcherController {
         } else if (userType.equals("student")) {
             return "redirect:/student/toStudentMain";
         } else {
-            return "parentsMain";
+            return "redirect:/student/toParentsMain";
         }
     }
 }

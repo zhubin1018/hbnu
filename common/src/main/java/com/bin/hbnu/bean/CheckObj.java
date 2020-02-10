@@ -13,4 +13,8 @@ public class CheckObj {
     private Integer sid;
     private Integer tid;
     private String beiZhu;
+
+
+    /*info*/
+    private MingXiMessage mingXiMessage;
 }
