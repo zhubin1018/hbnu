@@ -103,8 +103,6 @@ public class StudentController {
                 thid = teacher.getTid();
             }
         }
-        System.out.println("===========================================================");
-        System.out.println("thid = " + thid);
         Student student = studentService.validateStudent(user);
         Integer sid = student.getSid();
         PageHelper.startPage(pageNo, pageSize);
@@ -120,7 +118,6 @@ public class StudentController {
                 mingXiMessage.setSubtract(coursegrade.getSubtract());
                 mingXiMessage.setStuLoginAccount(coursegrade.getStuLoginAccount());
                 checkObj.setMingXiMessage(mingXiMessage);
-                System.out.println("checkObj = " + checkObj);
             }
         }
         PageInfo<CheckObj> info = new PageInfo<CheckObj>(checkObjs);
